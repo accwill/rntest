@@ -26,6 +26,8 @@ The following build commands failed:
 
 - 解决方式：
 解决方式参见：https://github.com/facebook/react-native/issues/31441
+- 最新的解决方式，修改package.json中的react-native的版本：`"react-native": "0.64.1",`, 然后执行`yarn && npx pod-install ios`， 重新执行`npm run ios`
+  
 
 
 #### 引用react-navigation/stack 时报错， react-native-gesture-handler module was not found.

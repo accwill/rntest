@@ -14,6 +14,7 @@ import { View, Text, Button } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { TextInput } from 'react-native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 function HomeScreen({ navigation, route }: any) {
   React.useEffect(() => {
@@ -110,21 +111,59 @@ function CreatePostScreen({ navigation }: any) {
 }
 
 const Stack = createStackNavigator()
+const Tab = createBottomTabNavigator()
+
+// export default function App() {
+//   return (
+//     <NavigationContainer>
+//       <Stack.Navigator initialRouteName="Home">
+//         <Stack.Screen
+//           name="Home"
+//           options={{ title: 'Overview' }}
+//           component={HomeScreen}
+//         />
+//         <Stack.Screen name="Detail">
+//           {props => <DetailScreen {...props} data={{ name: '张三' }} />}
+//         </Stack.Screen>
+//         <Stack.Screen name="CreatePost" component={CreatePostScreen} />
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   )
+// }
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen
+      <Tab.Navigator>
+        <Tab.Screen
           name="Home"
-          options={{ title: 'Overview' }}
           component={HomeScreen}
+          options={{
+            title: '待办'
+          }}
         />
-        <Stack.Screen name="Detail">
-          {props => <DetailScreen {...props} data={{ name: '张三' }} />}
-        </Stack.Screen>
-        <Stack.Screen name="CreatePost" component={CreatePostScreen} />
-      </Stack.Navigator>
+        <Tab.Screen
+          name="Discover"
+          component={HomeScreen}
+          options={{
+            title: '发现'
+          }}
+        />
+        <Tab.Screen
+          name="Judge"
+          component={HomeScreen}
+          options={{
+            title: '评判'
+          }}
+        />
+        <Tab.Screen
+          name="Mine"
+          component={HomeScreen}
+          options={{
+            title: '我的'
+          }}
+        />
+      </Tab.Navigator>
     </NavigationContainer>
   )
 }
